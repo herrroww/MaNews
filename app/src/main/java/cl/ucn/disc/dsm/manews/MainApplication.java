@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Main Application
  *
- * @author Diego Urrutia-Astorga.
+ * @author Martin Osorio.
  */
 public class MainApplication extends Application {
 
