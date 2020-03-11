@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-
-
 package cl.ucn.disc.dsm.manews.services.newsapi;
 
 import java.util.List;

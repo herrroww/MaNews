@@ -1,5 +1,5 @@
 /*
- * Copyright [2020] [Martin Osorio Bugueño]
+ * Copyright [2020] [Martin Osorio]
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@
 
 package cl.ucn.disc.dsm.manews.services.newsapi;
 
-import cl.ucn.disc.dsm.manews.services.newsapi.NewsApi;
-import cl.ucn.disc.dsm.manews.services.newsapi.NewsApiResult;
+import android.os.Build.VERSION_CODES;
+import androidx.annotation.RequiresApi;
 import cl.ucn.disc.dsm.manews.model.Noticia;
 import cl.ucn.disc.dsm.manews.services.NoticiaService;
 import cl.ucn.disc.dsm.manews.services.Transformer;
@@ -90,6 +90,7 @@ public final class NewsApiNoticiaService implements NoticiaService {
    * @param theCall to use.
    * @return the {@link List} of {@link Noticia}.
    */
+  @RequiresApi(api = VERSION_CODES.N)
   private static List<Noticia> getNoticiasFromCall(final Call<NewsApiResult> theCall) {
 
     try {
@@ -151,6 +152,7 @@ public final class NewsApiNoticiaService implements NoticiaService {
    * @param pageSize how many.
    * @return the {@link List} of {@link Noticia}.
    */
+  @RequiresApi(api = VERSION_CODES.N)
   @Override
   public List<Noticia> getNoticias(final int pageSize) {
 
@@ -166,6 +168,7 @@ public final class NewsApiNoticiaService implements NoticiaService {
    * @param pageSize - how many News
    * @return the {@link List} of {@link Noticia}.
    */
+  @RequiresApi(api = VERSION_CODES.N)
   @Override
   public List<Noticia> getTopHeadLines(final int pageSize) {
 

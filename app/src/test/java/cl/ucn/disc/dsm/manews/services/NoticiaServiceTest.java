@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Test of NoticiaService.
  *
- * @author Martin Oos.
+ * @author Martin Osorio bugueño.
  */
 public final class NoticiaServiceTest {
 
