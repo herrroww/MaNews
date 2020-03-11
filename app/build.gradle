@@ -1,22 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-
-    // SDK used to build the app
     compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    // Version de NDK a utilizar
+    ndkVersion "21.0.6011959"
 
     defaultConfig {
-
-        // The package-name (MUST be the same of AndroidManifest.xml)
-        applicationId "cl.ucn.disc.dsm.base"
-
-        // Min sdk version to run
+        applicationId "cl.ucn.disc.dsm.manews"
         minSdkVersion 24
-
-        // MUST be the same of compileSdkVersion
         targetSdkVersion 29
-
-        // Names (overridden in compile time)
         versionCode 1
         versionName "1.0"
 
@@ -24,9 +18,7 @@ android {
 
     }
 
-    // 2 versions: the debug and release.
     buildTypes {
-
         debug {
             debuggable true
             minifyEnabled false
@@ -57,7 +49,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // Override the versionCode and versionName
+// Override the versionCode and versionName
     android.applicationVariants.all { variant ->
         variant.outputs.each { output ->
             output.versionCodeOverride = project.ext.buildTimestamp
@@ -68,7 +60,6 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
-
     buildFeatures {
         // Determines whether to enable support for Jetpack Compose.
         // https://developer.android.com/jetpack/compose
@@ -89,7 +80,13 @@ android {
         shaders = true
     }
 
+
+
+
+
 }
+
+
 
 dependencies {
 
@@ -128,9 +125,55 @@ dependencies {
     // Constraintlayout
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
 
+
+
     // RecyclerView: https://developer.android.com/jetpack/androidx/releases/recyclerview
     implementation "androidx.recyclerview:recyclerview:1.2.0-alpha01"
     // SwipeRefreshLayout https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03"
+
+
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
+
+
+    // Retrofit: https://square.github.io/retrofit/
+    def retrofit_version = "2.7.1"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Gson: https://github.com/google/gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    // Commons Lang3: https://commons.apache.org/proper/commons-lang/
+    implementation 'org.apache.commons:commons-lang3:3.9'
+
+    // Hashing functions
+    // https://github.com/OpenHFT/Zero-Allocation-Hashing
+    implementation "net.openhft:zero-allocation-hashing:0.10.1"
+
+    // https://github.com/GrenderG/Toasty
+    implementation 'com.github.GrenderG:Toasty:1.4.2'
+
+    // Fresco (Images):
+    def fresco_version = "2.1.0"
+    implementation "com.facebook.fresco:fresco:$fresco_version"
+    implementation "com.facebook.fresco:imagepipeline-okhttp:$fresco_version"
+    // PhotoDraweeView: https://github.com/ongakuer/PhotoDraweeView
+    implementation "me.relex:photodraweeview:2.0.0"
+
+
+    // Prettytime
+    implementation "org.ocpsoft.prettytime:prettytime:4.0.2.Final"
+
+    // Okhttp: https://square.github.io/okhttp/
+    def okhttp_version = "4.3.0"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    // Lifecycle: https://developer.android.com/jetpack/androidx/releases/lifecycle
+    def lifecycle_version = "2.2.0-rc03"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
 
 }
