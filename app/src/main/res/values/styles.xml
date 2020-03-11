@@ -20,7 +20,7 @@
     <item name="android:textAppearanceMedium">@style/TextMedium</item>
     <item name="android:textAppearanceSmall">@style/TextSmall</item>
 
-    <item name="android:listDivider">@drawable/line_divider</item>
+
   </style>
 
   <style name="TextLarge" parent="TextAppearance.AppCompat.Large">
