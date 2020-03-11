@@ -34,4 +34,5 @@ public interface NoticiaService {
    */
   List<Noticia> getNoticias(final int pageSize);
 
+  List<Noticia> getTopHeadLines(final int pageSize);
 }
