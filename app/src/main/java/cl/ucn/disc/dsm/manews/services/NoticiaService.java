@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * The Service Class.
  *
- * @author Martin Osorio Bugueno.
+ * @author Martin Osorio Bugueño.
  */
 public interface NoticiaService {
 
