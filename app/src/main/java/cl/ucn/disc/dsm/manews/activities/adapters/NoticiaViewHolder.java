@@ -15,6 +15,7 @@
 package cl.ucn.disc.dsm.manews.activities.adapters;
 
 import androidx.recyclerview.widget.RecyclerView;
+import cl.ucn.disc.dsm.manews.R;
 import cl.ucn.disc.dsm.manews.databinding.RowNoticiaBinding;
 import cl.ucn.disc.dsm.manews.model.Noticia;
 
@@ -54,6 +55,16 @@ public final class NoticiaViewHolder extends RecyclerView.ViewHolder {
 
     // FIXME: The format of the date.
     this.binding.tvFecha.setText(noticia.getFecha().toString());
+
+
+    // If exist the url ..
+    if (noticia.getUrlFoto() != null) {
+      // .. set the uri
+      this.binding.sdvFoto.setImageURI(noticia.getUrlFoto());
+    } else {
+      // .. set a default image
+      this.binding.sdvFoto.setImageResource(R.drawable.ic_launcher_background);
+    }
 
   }
 
