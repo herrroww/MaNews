@@ -25,6 +25,8 @@ public class MainApplication extends Application {
   public void onCreate() {
     super.onCreate();
 
+
+
     // Day and Night support
     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
 
