@@ -25,14 +25,19 @@ import org.threeten.bp.DateTimeUtils;
 /**
  * ViewHolder Pattern.
  *
- * @author Martin Osorio Bugueño.
+ * @author Martin Osorio.
  */
 public final class NoticiaViewHolder extends RecyclerView.ViewHolder {
 
   /**
-   * The Bindings
+   * The Bindings.
    */
   private final RowNoticiaBinding binding;
+
+  /**
+   * The Date formatter.
+   */
+  private static final PrettyTime PRETTY_TIME = new PrettyTime();
 
   /**
    * The Constructor.
@@ -43,10 +48,7 @@ public final class NoticiaViewHolder extends RecyclerView.ViewHolder {
     super(rowNoticiaBinding.getRoot());
     this.binding = rowNoticiaBinding;
   }
-  /**
-   * The Date formatter
-   */
-  private static final PrettyTime PRETTY_TIME = new PrettyTime();
+
   /**
    * Bind the Noticia to the ViewHolder.
    *
@@ -58,10 +60,7 @@ public final class NoticiaViewHolder extends RecyclerView.ViewHolder {
     this.binding.tvResumen.setText(noticia.getResumen());
     this.binding.tvAutor.setText(noticia.getAutor());
     this.binding.tvFuente.setText(noticia.getFuente());
-
-    // FIXME: The format of the date.
     this.binding.tvFecha.setText(noticia.getFecha().toString());
-
 
     // If exist the url ..
     if (noticia.getUrlFoto() != null) {
@@ -71,10 +70,10 @@ public final class NoticiaViewHolder extends RecyclerView.ViewHolder {
       // .. set a default image
       this.binding.sdvFoto.setImageResource(R.drawable.ic_launcher_background);
     }
-// ZonedDateTime to Date
+
+    // ZonedDateTime to Date
     final Date date = DateTimeUtils.toDate(noticia.getFecha().toInstant());
     this.binding.tvFecha.setText(PRETTY_TIME.format(date));
   }
 
 }
-

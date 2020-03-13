@@ -1,4 +1,4 @@
-/* Copyright [2020] [Martin Osorio]
+/* Copyright [2020] [Martin Osorio Bugueño]
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,52 +50,45 @@ public class MainApplication extends Application {
   public void onCreate() {
     super.onCreate();
 
-    log.debug("Initializing ..");
 
-
-      // Here we write the code in debug build.
-
+    // AndroidThreeTen initialization
+    AndroidThreeTen.init(this);
 
     // Day and Night support
-    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
 
-      // Fresco configuration for large images
-
-      ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
-          .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
-          .setResizeAndRotateEnabledForNetwork(true)
-          .setDownsampleEnabled(true)
-          .build();
-
-
-      // Facebook fresco
+    // Facebook fresco
     Fresco.initialize(this);
 
-      // AndroidThreeTen initialization
-      AndroidThreeTen.init(this);
+    // Fresco configuration for large images
+    ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
+        .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
+        .setResizeAndRotateEnabledForNetwork(true)
+        .setDownsampleEnabled(true)
+        .build();
 
-      if (BuildConfig.DEBUG) {
+    // Fresco initialization
+    Fresco.initialize(this, config);
 
-        StrictMode.setThreadPolicy(new ThreadPolicy.Builder()
-            .detectDiskReads()
-            .detectDiskWrites()
-            .detectNetwork()
-            .penaltyLog()
-            .penaltyFlashScreen()
-            .build());
+    // Enforce strict mode in debug mode
+    if (BuildConfig.DEBUG) {
 
-        StrictMode.setVmPolicy(new VmPolicy.Builder()
-            .detectLeakedSqlLiteObjects()
-            .detectLeakedClosableObjects()
-            .detectLeakedRegistrationObjects()
-            .detectActivityLeaks()
-            .detectCleartextNetwork()
-            .penaltyLog()
-            .build());
+      StrictMode.setThreadPolicy(new ThreadPolicy.Builder()
+          .detectDiskReads()
+          .detectDiskWrites()
+          .detectNetwork()
+          .penaltyLog() //.penaltyFlashScreen()
+          .build());
 
-      }
-
-      log.debug("Initializing: Done.");
+      StrictMode.setVmPolicy(new VmPolicy.Builder()
+          .detectLeakedSqlLiteObjects()
+          .detectLeakedClosableObjects()
+          .detectLeakedRegistrationObjects()
+          .detectActivityLeaks()
+          .detectCleartextNetwork()
+          .penaltyLog()
+          .build());
     }
+    log.debug("Initializing: Done.");
   }
-
+}
