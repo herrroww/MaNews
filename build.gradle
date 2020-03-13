@@ -11,8 +11,8 @@ def BUILD_VERSION = "version ${YEAR_WEEK}:${DAY}:${HOUR_MINUTE}"
 // Plugin to check for the latest libraries version.
 apply plugin: "com.github.ben-manes.versions"
 
-buildscript {
 
+buildscript {
     repositories {
         google()
         jcenter()
@@ -21,6 +21,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.0-beta01'
         classpath "com.github.ben-manes:gradle-versions-plugin:0.27.0"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
@@ -37,6 +40,8 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+        maven { url 'https://jitpack.io' }
+        maven { url "https://jcenter.bintray.com/" }
     }
 }
 
