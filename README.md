@@ -10,6 +10,8 @@ News Notice Api
 
 -Technologies
 
+-License
+
 -Contact
 
 ## General info
@@ -29,6 +31,10 @@ project designed for the DSM subject with the purpose of learning to design mobi
 ## Technologies
 -JAVA 8
 -Gradle
+
+## License
+
+This project is under the License ( Apache 2.0 ) - LICENSE.md for more details.
 
 
 ## Contact
