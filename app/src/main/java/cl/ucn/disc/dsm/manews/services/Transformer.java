@@ -55,12 +55,12 @@ public class Transformer {
     // The host
     final String host = getHost(article.url);
 
-    // Si el articulo es null ..
+
     if (article.title == null) {
 
       log.warn("Article without title: {}", toString(article));
 
-      // .. y el contenido es null, lanzar exception!
+      // .. if content is null,  exception!
       if (article.description == null) {
         throw new NewsapiException("Article without title and description");
       }
@@ -124,22 +124,22 @@ public class Transformer {
    * @return the fecha.
    * @throws NewsapiException en caso de no convertir  la fecha.
    */
-  private static ZonedDateTime parseZonedDateTime(final String fecha) {
+  public static ZonedDateTime parseZonedDateTime(final String fecha) {
 
-    // Na' que hacer si la fecha no existe
+
     if (fecha == null) {
       throw new NewsapiException("Can't parse null fecha");
     }
 
     try {
-      // Tratar de convertir la fecha ..
+
       return ZonedDateTime.parse(fecha);
     } catch (DateTimeParseException ex) {
 
       // Mensaje de debug
       log.error("Can't parse date: ->{}<-. Error: ", fecha, ex);
 
-      // Anido la DateTimeParseException en una NoticiaTransformerException.
+
       throw new NewsapiException("Can't parse date: " + fecha, ex);
     }
   }
